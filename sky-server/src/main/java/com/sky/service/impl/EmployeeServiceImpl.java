@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee login(EmployeeLoginDTO employeeLoginDTO) {
         String username = employeeLoginDTO.getUsername();
         String password = employeeLoginDTO.getPassword();
-
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
         //1、根据用户名查询数据库中的数据
         Employee employee = employeeMapper.getByUsername(username);
 
